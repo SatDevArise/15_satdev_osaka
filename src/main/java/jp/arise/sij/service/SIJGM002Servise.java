@@ -64,7 +64,7 @@ public class SIJGM002Servise {
 //		}else {
 //			sijGm002Dao.insertSyainInfo(resultDto);
 //		}
-
+//
 //		return dto;
 //	}
 		/**
