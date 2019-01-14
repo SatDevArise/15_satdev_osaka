@@ -298,14 +298,14 @@ public class SIJGM002Controller {
 //		return new ModelAndView("forward:/initComGm002","SIJGM002MAV",sijGm002MAV);
 	}
 
-//	/**
-//	 * 戻る処理（遷移先：社員情報一覧表示画面）
-//	 * @param SIJGM002Form
-//	 * @return SiJGM001Controller.java
-//	 * @throws
-//	 * @author AtsushiNishizawa
-//	 * @since 2017/07/177
-//	 */
+	/**
+	 * 戻る処理（遷移先：社員情報一覧表示画面）
+	 * @param SIJGM002Form
+	 * @return SiJGM001Controller.java
+	 * @throws
+	 * @author AtsushiNishizawa
+	 * @since 2017/07/177
+	 */
 	@RequestMapping(value = "/initSijGm002",params = "backSijGm001", method = RequestMethod.POST)
 	public ModelAndView backSijGm001(SIJGM002Form sijGm002Form,Model model) {
 		SIJGM002Dto sijGm002Dto = new SIJGM002Dto();

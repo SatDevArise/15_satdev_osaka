@@ -40,10 +40,22 @@
     		<p>連絡先：<form:input path="syain_renrakusaki" type = "text" name = "連絡先" maxlength="11" style = "ime-mode:disabled"/></p>
     		<p>前職：<form:input path="zensyoku_na" type = "text" name = "前職" maxlength="20" style = "ime-mode:active"/>
     		   出身地：<form:input path="syussin_na" type = "text" name = "出身地" maxlength="20" style = "ime-mode:active"/></p>
-    		<p>役職：<form:input path="yakusyoku_cd" type = "text" name = "役職" maxlength="2" style = "ime-mode:disabled"/>
+    		<p>役職：<form:select path="yakusyoku_cd" type = "text" name ="役職" maxlength="2">
+    				<option value=""></option>
+    				<option value="01">01：メンバー</option>
+    				<option value="02">02：サブリーダー</option>
+    				<option value="03">03：リーダー</option>
+    				<option value="04">04：マネージャー</option>
+    				<option value="05">05：部長</option>
+    				</form:select>
     		   入社日：<form:input path="nyusya_dt" type = "text" name = "入社日" maxlength="8" style = "ime-mode:disabled"/>
-    		   役職の凡例：01:メンバー　02:サブリーダー　03:リーダー　04:マネージャー　05:部長</p>
-    		<p>チーム：<form:input path="syozoku_team" type = "text" name = "チーム" maxlength="30" style = "ime-mode:disabled"/></p>
+    		<p>チーム：<form:select path="syozoku_team" type = "text" name = "チーム" maxlength="30">
+    				<option value=""></option>
+    				<option value="Hチーム">Hチーム</option>
+    				<option value="Kチーム">Kチーム</option>
+    				<option value="Wチーム">Wチーム</option>
+    				</form:select>
+    		</p>
     		<p>フェーズ：<form:input path="phase_cd" type = "text" name = "フェーズ" maxlength="8" style = "ime-mode:disabled"/>
     		   単価：<form:input path="tanka_vl" type = "text" name = "単価" maxlength="5" style = "ime-mode:disabled"/></p>
     		<p>現場名：<form:input path="genba_na" type = "text" name = "現場名" maxlength="30" style = "ime-mode:active"/></p>
@@ -51,11 +63,16 @@
     		<p>
 
     		</p>
+    		<div align="right">
+    		<%session.setAttribute("param","COMGM002");%>
     		<input type="submit" class="btn btn-default" value="新規登録" name="entrySijGm002" formaction="${actionUrl}">
-    		<input type="submit" class="btn btn-success" value="更新" onclick="confirmUpload();" name="updateSijGm002" formaction="${actionUrl}">
-    		<input type="submit" class="btn btn-success" value="削除" onclick="confirmDelete();" name="deleteSijGm002" formaction="${actionUrl}">
+    		<c:if test="${param} = SIJGM001" >
+    		<input type="submit" class="btn btn-success" value="更新" onclick="confirmUpload();" name="updateSijGm002" formaction="${actionUrl}" disabled>
+    		<input type="submit" class="btn btn-success" value="削除" onclick="confirmDelete();" name="deleteSijGm002" formaction="${actionUrl}" disabled>
+    		</c:if>
     		<input type="submit" class="btn btn-info" value="戻る" name="backComGm002" formaction="${actionUrl}">
     		<input type="submit" class="btn btn-warning" value="戻る" name="backSijGm001" formaction="${actionUrl}">
+    		</div>
 			<p class="red">
 				<c:forEach var="error_hyoji" items="${SIJGM002Form.error_hyoji}">
 					・<c:out value="${error_hyoji}" />

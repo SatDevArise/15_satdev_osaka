@@ -219,10 +219,10 @@ public class SIJGM002Servise {
 //			}
 //		}
 
-			// 役職コード：半角文字チェック
-			if (!patternCheck(dto.getYakusyoku_cd())) {
-				resultMessage.add(SIJMessage.SIJE022.getMessage());
-			}
+//			// 役職コード：半角文字チェック
+//			if (!patternCheck(dto.getYakusyoku_cd())) {
+//				resultMessage.add(SIJMessage.SIJE022.getMessage());
+//			}
 
 
 //		// 連絡先：必須入力チェック

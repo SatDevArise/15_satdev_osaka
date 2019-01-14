@@ -102,17 +102,16 @@ public class SIJGM001Controller {
 	 * @since 2017/07/17
 	 */
 	@RequestMapping(value = "/initSijGm001", params = "goToSijGm002", method = RequestMethod.POST)
-	public ModelAndView goToSijGm002(SIJGM001Form sijGm001Form, Model model) {
+	public String goToSijGm002(SIJGM001Form sijGm001Form, Model model) {
 		 SIJGM001Dto sijGm001Dto = new SIJGM001Dto();
 		 sijGm001Dto.setUser(sijGm001Form.getUser());
-		// sijGm001Service.inputCheck(sijGm001Dto);
 
 		SIJGM001MAV sijGm001MAV = new SIJGM001MAV();
 		BeanUtils.copyProperties(sijGm001Form, sijGm001MAV);
 		 sijGm001MAV.setUser(sijGm001Form.getUser());
 		   sijGm001MAV.setSyainId(sijGm001Form.getSyainId());
 
-		return new ModelAndView("forward:/initSijGm002", "SIJGM001MAV", sijGm001MAV);
+		return "SIJGM002";
 	}
 
 	/**
