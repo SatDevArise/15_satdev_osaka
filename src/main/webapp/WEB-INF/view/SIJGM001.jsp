@@ -61,9 +61,7 @@
 
 					<c:forEach var="syainInfoList" items="${SIJGM001Form}">
 						<tr>
-							<th><input type="submit" class="btn btn-link"
-								value="${syainInfoList.syainId}" name="goToSijGm002"
-								formaction="${actionUrl}"></th>
+							<th><a href="./SIJGM002?syainId=${syainInfoList.syainId}"><c:out value="${syainInfoList.syainId}"/></a></th>
 							<th><c:out value="${syainInfoList.syainNa}" /></th>
 							<th><c:out value="${syainInfoList.yakusyokuNa}" /></th>
 							<th><c:out value="${syainInfoList.birthDt}" /></th>
