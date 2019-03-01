@@ -12,6 +12,9 @@
 <html>
 <head>
 <meta charset="utf-8">
+
+<link href="<c:url value="/resources/css/layout.css" />" rel="stylesheet">
+<link href="<c:url value="/resorces/css/SIJGM001.css" />" rel="styelesheet">
 <link
 	href="<c:url value="/resources/bootstrap/css/bootstrap.min.css" />"
 	rel="stylesheet">
@@ -28,7 +31,7 @@
 		<spring:url value="/initSijGm001" var="actionUrl" />
 
 		<form:form modelAttribute="SIJGM001Form" class="text-center"
-			style="margin-top: 30px;">
+			style="margin-top: 30px; overflow:schroll;">
 			<input type="button" class="btn btn-default" value="検索"
 				onclick="openCOMGM003();" style="margin-left: 10px;">
 			<input type="submit" class="btn btn-warning" value="戻る"
@@ -52,6 +55,7 @@
 							<th>経過年数</th>
 							<th>フェーズ</th>
 							<th>使用路線</th>
+							<th>社歴</th>
 							<th>単価</th>
 						</tr>
 					</thead>
@@ -70,6 +74,7 @@
 							<th><c:out value="${syainInfoList.keikaYm}" /></th>
 							<th><c:out value="${syainInfoList.phaseCd}" /></th>
 							<th><c:out value="${syainInfoList.siyoRosenNa}" /></th>
+							<th><c:out value="${syainInfoList.history} "/></th>
 							<th><c:out value="${syainInfoList.tankaVal}" /></th>
 						</tr>
 					</c:forEach>

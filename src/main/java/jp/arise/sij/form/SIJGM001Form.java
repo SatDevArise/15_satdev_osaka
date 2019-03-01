@@ -62,6 +62,8 @@ public class SIJGM001Form {
 	private String sakujoFg;
 	/** ユーザー **/
 	private String user;
+	/** 社歴 **/
+	private String history;
 
 	/**
 	 * 検索キーリスト
@@ -461,6 +463,22 @@ public class SIJGM001Form {
 	 */
 	public void setUser(String user) {
 		this.user = user;
+	}
+
+	/**
+	 * 社歴を取得します
+	 * @return
+	 */
+	public String getHistory() {
+		return history;
+	}
+
+	/**
+	 * 社歴を設定します
+	 * @param history
+	 */
+	public void setHistory(String history) {
+		this.history = history;
 	}
 
 }

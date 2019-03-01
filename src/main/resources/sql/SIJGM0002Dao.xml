@@ -55,6 +55,7 @@
 		,moyori_eki_2
 		,moyori_eki_3
 		,nyusya_dt
+		,genba_sankaku_dt
 		,syozoku_team
 		,birth_dt
 		,tanka_vl
@@ -78,6 +79,7 @@
 		,#{moyori_eki_2}
 		,#{moyori_eki_3}
 		,#{nyusya_dt}
+		,#{genba_sankaku_dt}
 		,#{syozoku_team}
 		,#{birth_dt}
 		,#{tanka_vl}
@@ -104,6 +106,7 @@
 		   ,moyori_eki_2 = #{moyori_eki_2}
 		   ,moyori_eki_3 = #{moyori_eki_3}
 		   ,nyusya_dt = #{nyusya_dt}
+		   ,genba_sankaku_dt = #{genba_sankaku_dt}
 		   ,syozoku_team = #{syozoku_team}
 		   ,birth_dt = #{birth_dt}
 		   ,tanka_vl = #{tanka_vl}

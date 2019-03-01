@@ -97,7 +97,7 @@ public class SIJGM002Controller {
 	 * @author AtsushiNishizawa
 	 * @since 2017/07/17
 	 */
-	@RequestMapping(value = "/initSijGm002",params = "goToSijGm002",method = RequestMethod.GET)
+	@RequestMapping(value = "/SIJGM002",method = RequestMethod.GET)
 	public String initSijGm002(@RequestParam("syainId") String syainId,Model model) {
 		// 画面ID更新処理
 		sijGm002Service.upSession(UTLContent.GMID_SIJGM001);

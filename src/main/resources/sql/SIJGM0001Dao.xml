@@ -28,6 +28,7 @@
 		<result column="genba_na" property="genbaNa" />
 		<result column="yuko_fg" property="yukoFg" />
 		<result column="sakujo_fg" property="sakujoFg" />
+		<result column="history" property="history" />
 
 	</resultMap>
 

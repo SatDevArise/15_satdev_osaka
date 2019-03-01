@@ -1,6 +1,9 @@
 package jp.arise.sij.controller;
 
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 import org.springframework.beans.BeanUtils;
@@ -161,11 +164,25 @@ public class SIJGM001Controller {
 				sijGm001Form.setBirthDt(syainList.get(i).getBirthDt());
 				sijGm001Form.setSyozokuTeam(syainList.get(i).getSyozokuTeam());
 				sijGm001Form.setGenbaNa(syainList.get(i).getGenbaNa());
-				sijGm001Form.setKeikaYm(syainList.get(i).getKeikaYm());
+//				sijGm001Form.setKeikaYm(syainList.get(i).getKeikaYm());
 				sijGm001Form.setPhaseCd(syainList.get(i).getPhaseCd());
 				sijGm001Form.setSiyoRosenNa(syainList.get(i).getSiyoRosenNa());
+//				sijGm001Form.setHistory(syainList.get(i).getHistory());
 				sijGm001Form.setTankaVal(syainList.get(i).getTankaVal());
 				sijgm001FormList.add(sijGm001Form);
+
+				// 経過年数を入れる
+				if(syainList.get(i).getKeikaYm() != null && !syainList.get(i).getKeikaYm().isEmpty()) {
+					String yearDiff = calcDuration(syainList.get(i).getNyusyaDt());
+					sijGm001Form.setKeikaYm(yearDiff);
+				}
+
+				// 社歴を入れる
+				if(syainList.get(i).getHistory() != null && !syainList.get(i).getHistory().isEmpty()) {
+					String yearDiff = calcDuration(syainList.get(i).getHistory());
+					sijGm001Form.setHistory(yearDiff);
+				}
+
 
 				System.out.println("---------------------------------------------");
 				System.out.println("社員ID：" + syainList.get(i).getSyainId());
@@ -177,6 +194,7 @@ public class SIJGM001Controller {
 				System.out.println("経過年数：" + syainList.get(i).getKeikaYm());
 				System.out.println("フェーズ区分：" + syainList.get(i).getPhaseCd());
 				System.out.println("使用路線：" + syainList.get(i).getSiyoRosenNa());
+				System.out.println("社歴：" + syainList.get(i).getHistory());
 				System.out.println("単価：" + syainList.get(i).getTankaVal());
 				System.out.println("---------------------------------------------");
 			}
@@ -184,4 +202,32 @@ public class SIJGM001Controller {
 
 		return sijgm001FormList;
 	}
+
+	/**
+	 * 年数を算出するメソッド
+	 */
+		private String calcDuration(String str) {
+			SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
+			Date dateFrom = null;
+			try {
+				dateFrom = sdf.parse(str);
+			} catch (ParseException e) {
+				e.printStackTrace();
+			}
+
+			Date currentDate = new Date();
+
+			// 日付をlong値に変換します
+			long dateTimeTo = currentDate.getTime();
+			long dateTimeFrom = dateFrom.getTime();
+
+			// 差分の日数を算出します
+			long dayDiff = (dateTimeTo -dateTimeFrom) / (1000 * 60 * 60 * 24);
+			System.out.println("日数：" + dayDiff);
+			long yearDiff = dayDiff / 365;
+			System.out.println("年数：" + yearDiff);
+
+			return String.valueOf(yearDiff);
+		}
+
 }

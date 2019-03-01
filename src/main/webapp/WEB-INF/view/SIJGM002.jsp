@@ -56,9 +56,20 @@
     				<option value="Wチーム">Wチーム</option>
     				</form:select>
     		</p>
-    		<p>フェーズ：<form:input path="phase_cd" type = "text" name = "フェーズ" maxlength="8" style = "ime-mode:disabled"/>
+    		<p>フェーズ：<form:select path="phase_cd" type = "text" name = "フェーズ" maxlength="8" style = "ime-mode:disabled">
+    				<option value=""></option>
+    				<option value="評価">評価</option>
+					<option value="開発">開発</option>
+					<option value="設計">設計</option>
+					<option value="運用">運用</option>
+					<option value="構築">構築</option>
+					</form:select>
     		   単価：<form:input path="tanka_vl" type = "text" name = "単価" maxlength="5" style = "ime-mode:disabled"/></p>
-    		<p>現場名：<form:input path="genba_na" type = "text" name = "現場名" maxlength="30" style = "ime-mode:active"/></p>
+    		<p>現場名：<form:select path="genba_na" type = "text" name = "現場名" maxlength="30">
+    					<option value =""></option>
+    					<option value = "テスト"></option>
+						</form:select>
+			</p>
     		<p>参画日：<form:input path="genba_sankaku_dt" type = "text" name = "参画日" maxlength="8" style = "ime-mode:disabled"/></p>
     		<p>
 
@@ -66,10 +77,8 @@
     		<div align="right">
     		<%session.setAttribute("param","COMGM002");%>
     		<input type="submit" class="btn btn-default" value="新規登録" name="entrySijGm002" formaction="${actionUrl}">
-    		<c:if test="${param} = SIJGM001" >
     		<input type="submit" class="btn btn-success" value="更新" onclick="confirmUpload();" name="updateSijGm002" formaction="${actionUrl}" disabled>
     		<input type="submit" class="btn btn-success" value="削除" onclick="confirmDelete();" name="deleteSijGm002" formaction="${actionUrl}" disabled>
-    		</c:if>
     		<input type="submit" class="btn btn-info" value="戻る" name="backComGm002" formaction="${actionUrl}">
     		<input type="submit" class="btn btn-warning" value="戻る" name="backSijGm001" formaction="${actionUrl}">
     		</div>
