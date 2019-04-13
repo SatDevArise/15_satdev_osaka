@@ -5,6 +5,7 @@
 <mapper namespace="jp.arise.sij.dao.SIJGM002Dao">
 	<resultMap id="resultSIJGM002Dto" type="jp.arise.sij.dto.SIJGM002Dto">
 		<result column="syain_id" property="syain_id" />
+		<result column="genba_id" property="genba_id" />
 		<result column="syain_na" property="syain_na" />
 		<result column="birth" property="birth" />
 		<result column="syain_address" property="syain_address"/>
@@ -55,6 +56,7 @@
 		,moyori_eki_2
 		,moyori_eki_3
 		,nyusya_dt
+		,genba_sankaku_dt
 		,syozoku_team
 		,birth_dt
 		,tanka_vl
@@ -78,6 +80,7 @@
 		,#{moyori_eki_2}
 		,#{moyori_eki_3}
 		,#{nyusya_dt}
+		,#{genba_sankaku_dt}
 		,#{syozoku_team}
 		,#{birth_dt}
 		,#{tanka_vl}
@@ -88,7 +91,7 @@
 		,1
 		,0
 		,#{user}
-		,#{date}
+		,to_char(current_timestamp,'yyyyMMddHHmmss')
 		)
 
 	</insert>
@@ -104,12 +107,14 @@
 		   ,moyori_eki_2 = #{moyori_eki_2}
 		   ,moyori_eki_3 = #{moyori_eki_3}
 		   ,nyusya_dt = #{nyusya_dt}
+		   ,genba_sankaku_dt = #{genba_sankaku_dt}
 		   ,syozoku_team = #{syozoku_team}
 		   ,birth_dt = #{birth_dt}
 		   ,tanka_vl = #{tanka_vl}
 		   ,zensyoku_na = #{zensyoku_na}
 		   ,syain_renrakusaki = #{syain_renrakusaki}
 		   ,syussin_na = #{syussin_na}
+		   ,update_ts = to_char(current_timestamp,'yyyyMMddHHmmss')
 		WHERE syain_id = #{syain_id}
 
 	</update>
@@ -120,6 +125,7 @@
 		SET
 			yuko_fg = 0
 			,sakujo_fg =1
+			,delete_ts = to_char(current_timestamp,'yyyyMMddHHmmss')
 		WHERE
 			syain_id=#{syain_id}
 	</delete>

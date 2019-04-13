@@ -1,7 +1,6 @@
 package jp.arise.sij.controller;
 
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.List;
 
 import org.springframework.beans.BeanUtils;
@@ -64,7 +63,7 @@ public class SIJGM002Controller {
 		//ログイン情報取得
 		LoginInfoDto loginInfoDto = new LoginInfoDto();
 		loginInfoDto = loginInfo.getAttribute();
-		System.out.println(loginInfoDto.getUser_id());
+		System.out.println(loginInfoDto.getUser_na());
 
 		//社員ID情報取得
 		SIJGM002Dto sijgm002Dto = new SIJGM002Dto();
@@ -76,7 +75,7 @@ public class SIJGM002Controller {
 		// Serviceクラスの社員ID採番処理を呼び出す
 		String syainId = sijGm002Service.getSyainId();
 
-		// Serviceクラスの社員ID採番処理を呼び出す
+		// Serviceクラスの現場ID採番処理を呼び出す
 		String genbaId = sijGm002Service.getGenbaId();
 
 		//Formに社員ID・現場IDをセット
@@ -84,7 +83,7 @@ public class SIJGM002Controller {
 		sijGm002Form.setGenba_id(genbaId);
 
 		//Formにユーザを設定
-		sijGm002Form.setUser(" ");
+		sijGm002Form.setUser((String) loginInfoDto.getUser_na());
 		model.addAttribute("SIJGM002Form",sijGm002Form);
 		return "SIJGM002";
 	}
@@ -122,9 +121,14 @@ public class SIJGM002Controller {
 	 */
 	@RequestMapping(value = "/reInitSijGm002", method = RequestMethod.POST)
 	public String reinitSijGm002(Model model) {
-		//社員ID情報取得
+			//社員ID情報取得
 				SIJGM002Dto sijgm002Dto = new SIJGM002Dto();
 				BeanUtils.copyProperties(sijgm002Dto, sijGm002Service);
+
+				//ログイン情報取得
+				LoginInfoDto loginInfoDto = new LoginInfoDto();
+				loginInfoDto = loginInfo.getAttribute();
+				System.out.println(loginInfoDto.getUser_id());
 
 				//Formを生成
 				SIJGM002Form sijGm002Form = new SIJGM002Form();
@@ -132,15 +136,15 @@ public class SIJGM002Controller {
 				// Serviceクラスの社員ID採番処理を呼び出す
 				String syainId = sijGm002Service.getSyainId();
 
-				// Serviceクラスの社員ID採番処理を呼び出す
+				// Serviceクラスの現場ID採番処理を呼び出す
 				String genbaId = sijGm002Service.getGenbaId();
 
 				//Formに社員ID・現場IDをセット
 				sijGm002Form.setSyain_id(syainId);
-				sijGm002Form.setGenba_id(genbaId);
+//				sijGm002Form.setGenba_id(genbaId);
 
 				//Formにユーザを設定
-				sijGm002Form.setUser(" ");
+				sijGm002Form.setUser((String) loginInfoDto.getUser_id());
 				model.addAttribute("SIJGM002Form",sijGm002Form);
 
 		return "SIJGM002";
@@ -188,6 +192,7 @@ public class SIJGM002Controller {
 		sijGm002Service.insertSyainInfo(sijGm002Dto);
 		BeanUtils.copyProperties(sijGm002Dto,sijGm002MAV);
 		return new ModelAndView("forward:/reInitSijGm002","COMGM001MAV",sijGm002MAV);
+//		return "SIJGM002";
 	}
 
 	/**
@@ -236,13 +241,14 @@ public class SIJGM002Controller {
 			resultMessage.add(SIJMessage.SIJE0019.getMessage());
 			resultMessage.add(SIJMessage.SIJE020.getMessage());
 			resultMessage.add(SIJMessage.SIJE021.getMessage());
-//			sijGm002Dto.setError_hyoji(resultMessage);
+			sijGm002Dto.setError_hyoji(resultMessage);
 			sijGm002MAV.setError_hyoji(resultMessage);
 			BeanUtils.copyProperties(sijGm002Dto,sijGm002MAV);
 			return new ModelAndView("forward:/sijMessage","SIJGM002MAV",sijGm002MAV);
 		}
 		BeanUtils.copyProperties(sijGm002Dto,sijGm002MAV);
-		return new ModelAndView("forward:/reInitSijGm002","COMGM001MAV",sijGm002MAV);
+		return new ModelAndView("forward:/initSijGm001","SIJGM002MAV",sijGm002MAV);
+//		return "SIJGM002";
 	}
 
 	/**
@@ -254,13 +260,13 @@ public class SIJGM002Controller {
 	 * @since 2017/07/17
 	 */
 	@RequestMapping(value = "/initSijGm002",params = "deleteSijGm002", method = RequestMethod.POST)
-	public String deleteSijGm002(SIJGM002Form sijGm002Form,Model model) {
+	public ModelAndView deleteSijGm002(SIJGM002Form sijGm002Form,Model model) {
 		//フォームの値をDtoへコピー
 		SIJGM002Dto sijGm002Dto = setSijGm002dto(sijGm002Form);
 
 		//削除処理
 		sijGm002Service.delSyainInfo(sijGm002Dto);
-			return "SIJGM002";
+			return new ModelAndView("forward:/initSijGm001","SIJGM002MAV",sijGm002MAV);
 	}
 
 	/**
@@ -324,8 +330,8 @@ private SIJGM002Dto setSijGm002dto(SIJGM002Form sijgm002Form) {
 	// Dtoを生成
 	SIJGM002Dto sijGm002Dto = new SIJGM002Dto();
 
-	// 日付を取得
-	Date date = new Date();
+//	// 日付を取得
+//	Date date = new Date();
 	// ログイン情報を取得
 	LoginInfoDto loginInfoDto = new LoginInfoDto();
 	String userId = (String)loginInfo.getAttribute().getUser_id();

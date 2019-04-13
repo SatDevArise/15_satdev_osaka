@@ -191,58 +191,59 @@ public class SIJGM002Servise {
 			}
 		}
 
-//		// 最寄り駅2：必須入力チェック
-//		if (!StringUtils.isEmpty(dto.getMoyori_eki_2())) {
-//			 resultMessage.add(SIJMessage.SIJE007.getMessage());
-//		} else {
-//			// 最寄り駅2：全角文字チェック
-//			if (patternCheck(dto.getMoyori_eki_2())) {
-//				resultMessage.add(SIJMessage.SIJE017.getMessage());
-//			}
-//			// 最寄り駅2：桁数チェック
-//			if (!digitCheck(dto.getMoyori_eki_2(), UTLContent.INT_EIGHT)) {
-//				resultMessage.add(SIJMessage.SIJE018.getMessage());
-//			}
-//		}
-//
-//		// 最寄り駅3：必須入力チェック
-//		if (!StringUtils.isEmpty(dto.getMoyori_eki_3())) {
-//			 resultMessage.add(SIJMessage.SIJE007.getMessage());
-//		} else {
-//			// 最寄り駅2：全角文字チェック
-//			if (patternCheck(dto.getMoyori_eki_3())) {
-//				resultMessage.add(SIJMessage.SIJE017.getMessage());
-//			}
-//			// 最寄り駅2：桁数チェック
-//			if (!digitCheck(dto.getMoyori_eki_3(), UTLContent.INT_EIGHT)) {
-//				resultMessage.add(SIJMessage.SIJE018.getMessage());
-//			}
-//		}
+		// 最寄り駅2：必須入力チェック
+		if ((StringUtils.isEmpty(dto.getMoyori_eki_1()) && !StringUtils.isEmpty(dto.getMoyori_eki_2())) ||
+				(StringUtils.isEmpty(dto.getMoyori_eki_1()) && !StringUtils.isEmpty(dto.getMoyori_eki_2()) && StringUtils.isEmpty(dto.getMoyori_eki_3()))) {
+			 resultMessage.add(SIJMessage.SIJE007.getMessage());
+		} else {
+			// 最寄り駅2：全角文字チェック
+			if (patternCheck(dto.getMoyori_eki_2())) {
+				resultMessage.add(SIJMessage.SIJE017.getMessage());
+			}
+			// 最寄り駅2：桁数チェック
+			if (!digitCheck(dto.getMoyori_eki_2(), UTLContent.INT_EIGHT)) {
+				resultMessage.add(SIJMessage.SIJE018.getMessage());
+			}
+		}
 
-//			// 役職コード：半角文字チェック
-//			if (!patternCheck(dto.getYakusyoku_cd())) {
-//				resultMessage.add(SIJMessage.SIJE022.getMessage());
-//			}
+		// 最寄り駅3：必須入力チェック
+		if (StringUtils.isEmpty(dto.getMoyori_eki_1()) && StringUtils.isEmpty(dto.getMoyori_eki_2()) && StringUtils.isEmpty(dto.getMoyori_eki_3())) {
+			 resultMessage.add(SIJMessage.SIJE007.getMessage());
+		} else {
+			// 最寄り駅2：全角文字チェック
+			if (patternCheck(dto.getMoyori_eki_3())) {
+				resultMessage.add(SIJMessage.SIJE017.getMessage());
+			}
+			// 最寄り駅2：桁数チェック
+			if (!digitCheck(dto.getMoyori_eki_3(), UTLContent.INT_EIGHT)) {
+				resultMessage.add(SIJMessage.SIJE018.getMessage());
+			}
+		}
+
+			// 役職コード：半角文字チェック
+			if (!patternCheck(dto.getYakusyoku_cd())) {
+				resultMessage.add(SIJMessage.SIJE022.getMessage());
+			}
 
 
-//		// 連絡先：必須入力チェック
-//		if (!StringUtils.isEmpty(dto.getSyain_renrakusaki())) {
-//			 resultMessage.add(SIJMessage.SIJE008.getMessage());
-//		} else {
-//			// 連絡先：半角文字チェック
-//			if (!patternCheck(dto.getSyain_renrakusaki())) {
-//				resultMessage.add(SIJMessage.SIJE009.getMessage());
-//			}
-//			// 連絡先：桁数チェック
-//			if (!digitCheck(dto.getSyain_renrakusaki(), UTLContent.INT_EIGHT)) {
-//				resultMessage.add(SIJMessage.SIJE0010.getMessage());
-//			}
-//		}
+		// 連絡先：必須入力チェック
+		if (StringUtils.isEmpty(dto.getSyain_renrakusaki())) {
+			 resultMessage.add(SIJMessage.SIJE008.getMessage());
+		} else {
+			// 連絡先：半角文字チェック
+			if (!patternCheck(dto.getSyain_renrakusaki())) {
+				resultMessage.add(SIJMessage.SIJE009.getMessage());
+			}
+			// 連絡先：桁数チェック
+			if (!digitCheck(dto.getSyain_renrakusaki(), UTLContent.INT_EIGHT)) {
+				resultMessage.add(SIJMessage.SIJE0010.getMessage());
+			}
+		}
 
 
 
 //		// 重複チェック
-//		if(!StringUtils.isEmpty(dto.getSyain_id()) && ) {
+//		if(!StringUtils.isEmpty(dto.getSyain_id()) && StringUtils.quote(getSyainId()) {
 //			resultMessage.add(SIJMessage.SIJE0099.getMessage());
 //			dto.setError_hyoji(resultMessage);
 //			return dto;

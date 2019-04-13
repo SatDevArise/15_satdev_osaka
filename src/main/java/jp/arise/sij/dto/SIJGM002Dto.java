@@ -184,7 +184,7 @@ public class SIJGM002Dto implements Serializable{
 	 * 連絡先を設定
 	 * @param syain_renrakusaki
 	 */
-	public void seSyain_renrakusaki(String syain_renrakusaki) {
+	public void setSyain_renrakusaki(String syain_renrakusaki) {
 		this.syain_renrakusaki = syain_renrakusaki;
 	}
 

@@ -30,7 +30,7 @@
 
     		</p>
     		<p>社員ID:<form:input path="syain_id" type = "text" name="社員ID" maxlength="4" readonly="readonly" onFocus="this.blur()"/>
-    		   現場ID：<form:input path="genba_id" type="hidden"/></p>
+    			<form:input path="genba_id" type= "hidden" name="現場ID" maxlength="4" readonly="readonly" onFocus="this.blur()"/></p>
 			<p>氏名：<form:input path="syain_na" type = "text" name = "氏名" maxlength="20" style="ime-mode:active"/>
 			   生年月日：<form:input path="birth_dt" type ="text" name = "生年月日" maxlength="8" style="ime-mode:disabled"/></p>
 			<p>住所：<form:input path ="syain_address" type = "text" name = "住所" maxlength="100" style="ime-mode:active"/></p>
@@ -40,35 +40,36 @@
     		<p>連絡先：<form:input path="syain_renrakusaki" type = "text" name = "連絡先" maxlength="11" style = "ime-mode:disabled"/></p>
     		<p>前職：<form:input path="zensyoku_na" type = "text" name = "前職" maxlength="20" style = "ime-mode:active"/>
     		   出身地：<form:input path="syussin_na" type = "text" name = "出身地" maxlength="20" style = "ime-mode:active"/></p>
-    		<p>役職：<form:select path="yakusyoku_cd" type = "text" name ="役職" maxlength="2">
-    				<option value=""></option>
-    				<option value="01">01：メンバー</option>
-    				<option value="02">02：サブリーダー</option>
-    				<option value="03">03：リーダー</option>
-    				<option value="04">04：マネージャー</option>
-    				<option value="05">05：部長</option>
-    				</form:select>
+    		<p>役職：<form:input path="yakusyoku_cd" type = "text" name ="役職" list = "yakusyoku" maxlength="2" />
+    				 <datalist id = "yakusyoku">
+    					<option value="01">メンバー</option>
+    					<option value="02">サブリーダー</option>
+    					<option value="03">リーダー</option>
+    					<option value="04">マネージャー</option>
+    					<option value="05">部長</option>
+    				</datalist>
     		   入社日：<form:input path="nyusya_dt" type = "text" name = "入社日" maxlength="8" style = "ime-mode:disabled"/>
-    		<p>チーム：<form:select path="syozoku_team" type = "text" name = "チーム" maxlength="30">
-    				<option value=""></option>
-    				<option value="Hチーム">Hチーム</option>
-    				<option value="Kチーム">Kチーム</option>
-    				<option value="Wチーム">Wチーム</option>
-    				</form:select>
+    		<p>チーム：<form:input path="syozoku_team" type = "text" name = "チーム" list = "team" maxlength="30" />
+    				   <datalist id = "team">
+    						<option value="Hチーム">Hチーム</option>
+    						<option value="Kチーム">Kチーム</option>
+    						<option value="Wチーム">Wチーム</option>
+    				</datalist>
     		</p>
-    		<p>フェーズ：<form:select path="phase_cd" type = "text" name = "フェーズ" maxlength="8" style = "ime-mode:disabled">
-    				<option value=""></option>
-    				<option value="評価">評価</option>
-					<option value="開発">開発</option>
-					<option value="設計">設計</option>
-					<option value="運用">運用</option>
-					<option value="構築">構築</option>
-					</form:select>
+    		<p>フェーズ：<form:input path="phase_cd" type = "text" name = "フェーズ" list = "phase" maxlength="8" style = "ime-mode:disabled" />
+    					 <datalist id = "phase">
+    						<option value=""></option>
+    						<option value="評価">評価</option>
+							<option value="開発">開発</option>
+							<option value="設計">設計</option>
+							<option value="運用">運用</option>
+							<option value="構築">構築</option>
+					</datalist>
     		   単価：<form:input path="tanka_vl" type = "text" name = "単価" maxlength="5" style = "ime-mode:disabled"/></p>
-    		<p>現場名：<form:select path="genba_na" type = "text" name = "現場名" maxlength="30">
-    					<option value =""></option>
-    					<option value = "テスト"></option>
-						</form:select>
+    		<p>現場名：<form:input path="genba_na" type = "text" name = "現場名" list = "genbaName" maxlength="30" />
+    					<datalist id = "genbaName">
+    						<option value = "テスト"></option>
+    					</datalist>
 			</p>
     		<p>参画日：<form:input path="genba_sankaku_dt" type = "text" name = "参画日" maxlength="8" style = "ime-mode:disabled"/></p>
     		<p>
@@ -77,15 +78,17 @@
     		<div align="right">
     		<%session.setAttribute("param","COMGM002");%>
     		<input type="submit" class="btn btn-default" value="新規登録" name="entrySijGm002" formaction="${actionUrl}">
-    		<input type="submit" class="btn btn-success" value="更新" onclick="confirmUpload();" name="updateSijGm002" formaction="${actionUrl}" disabled>
-    		<input type="submit" class="btn btn-success" value="削除" onclick="confirmDelete();" name="deleteSijGm002" formaction="${actionUrl}" disabled>
+    		<input type="submit" class="btn btn-success" value="更新" onclick="updateCheck();" name="updateSijGm002" formaction="${actionUrl}" >
+    		<input type="submit" class="btn btn-success" value="削除" onclick="confirmDelete();" name="deleteSijGm002" formaction="${actionUrl}" >
     		<input type="submit" class="btn btn-info" value="戻る" name="backComGm002" formaction="${actionUrl}">
     		<input type="submit" class="btn btn-warning" value="戻る" name="backSijGm001" formaction="${actionUrl}">
     		</div>
 			<p class="red">
 				<c:forEach var="error_hyoji" items="${SIJGM002Form.error_hyoji}">
-					・<c:out value="${error_hyoji}" />
+					<font color="red">
+					<c:out value="${error_hyoji}" />
 					<br>
+					</font>
 				</c:forEach>
 			</p>
 
