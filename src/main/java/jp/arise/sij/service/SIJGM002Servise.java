@@ -157,11 +157,6 @@ public class SIJGM002Servise {
 			if (patternCheck(dto.getSyain_na())) {
 				resultMessage.add(SIJMessage.SIJE013.getMessage());
 			}
-			// 氏名：桁数チェック
-			System.out.println(dto.getSyain_na());
-			if (!digitCheck(dto.getSyain_na(), UTLContent.TWENTY)) {
-				resultMessage.add(SIJMessage.SIJE014.getMessage());
-			}
 		}
 
 		// 生年月日：必須入力チェック
@@ -171,9 +166,9 @@ public class SIJGM002Servise {
 			// 生年月日：半角文字チェック
 			if (!patternCheck(dto.getBirth_dt())) {
 				resultMessage.add(SIJMessage.SIJE004.getMessage());
-			}
-			// 生年月日：桁数チェック
-			if (!digitCheck(dto.getBirth_dt(), UTLContent.INT_EIGHT)) {
+		}
+		// 生年月日：桁数チェック
+		if (digitCheck(dto.getBirth_dt(), UTLContent.INT_EIGHT)) {
 				resultMessage.add(SIJMessage.SIJE005.getMessage());
 			}
 		}
@@ -184,10 +179,6 @@ public class SIJGM002Servise {
 			// 最寄り駅1：全角文字チェック
 			if (patternCheck(dto.getMoyori_eki_1())) {
 				resultMessage.add(SIJMessage.SIJE015.getMessage());
-			}
-			// 最寄り駅1：桁数チェック
-			if (!digitCheck(dto.getMoyori_eki_1(), UTLContent.INT_TEN)) {
-				resultMessage.add(SIJMessage.SIJE016.getMessage());
 			}
 		}
 
@@ -200,10 +191,6 @@ public class SIJGM002Servise {
 			if (patternCheck(dto.getMoyori_eki_2())) {
 				resultMessage.add(SIJMessage.SIJE017.getMessage());
 			}
-			// 最寄り駅2：桁数チェック
-			if (!digitCheck(dto.getMoyori_eki_2(), UTLContent.INT_EIGHT)) {
-				resultMessage.add(SIJMessage.SIJE018.getMessage());
-			}
 		}
 
 		// 最寄り駅3：必須入力チェック
@@ -213,10 +200,6 @@ public class SIJGM002Servise {
 			// 最寄り駅2：全角文字チェック
 			if (patternCheck(dto.getMoyori_eki_3())) {
 				resultMessage.add(SIJMessage.SIJE017.getMessage());
-			}
-			// 最寄り駅2：桁数チェック
-			if (!digitCheck(dto.getMoyori_eki_3(), UTLContent.INT_EIGHT)) {
-				resultMessage.add(SIJMessage.SIJE018.getMessage());
 			}
 		}
 
@@ -235,7 +218,7 @@ public class SIJGM002Servise {
 				resultMessage.add(SIJMessage.SIJE009.getMessage());
 			}
 			// 連絡先：桁数チェック
-			if (!digitCheck(dto.getSyain_renrakusaki(), UTLContent.INT_EIGHT)) {
+			if (digitCheck(dto.getSyain_renrakusaki(), UTLContent.INT_ELEVEN)) {
 				resultMessage.add(SIJMessage.SIJE0010.getMessage());
 			}
 		}
@@ -283,7 +266,7 @@ public class SIJGM002Servise {
 	private boolean digitCheck(String str, int digit) {
 		System.out.println(digit);
 		System.out.println(str.length());
-		if (!(digit >= str.length())) {
+		if ((digit == str.length())) {
 			return false;
 		}
 		return true;

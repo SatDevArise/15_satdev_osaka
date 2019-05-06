@@ -41,8 +41,8 @@
 
 			<!-- 社員情報一覧表示 -->
 			  <div align="center" >
-			  	<div style ="height:400px; width:630px; overflow-y:scroll; overflow-x:scroll;">
-				<table class="table-bordered" style="margin-top: 30px; ">
+			   <div style ="height:400px; width:640px; overflow-y:scroll; overflow-x:scroll;">
+			     <table class="table-bordered" style="margin-top: 30px;">
 
 					<!-- ヘッダ -->
 					<thead style="color: #FFFFFF; background-color: #191970;">
@@ -65,7 +65,6 @@
 
 					<!-- 明細 -->
 
-
 					  <c:forEach var="syainInfoList" items="${SIJGM001Form}">
 
 						<tr>
@@ -83,11 +82,12 @@
 							<th><c:out value="${syainInfoList.tankaVal}" /></th>
 
 						</tr>
-					  </c:forEach>
-					</table>
-				</div>
-		  	</div>
-
+					</c:forEach>
+				 </table>
+			  </div>
+			 <input type="button" class="btn btn-default" value="前ページ" style="margin-left: 10px;">
+			 <input type="button" class="btn btn-default" value="次ページ" style="margin-left: 10px;">
+			</div>
 		</form:form>
 
 	</div>

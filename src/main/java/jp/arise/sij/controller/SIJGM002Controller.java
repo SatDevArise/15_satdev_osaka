@@ -182,7 +182,6 @@ public class SIJGM002Controller {
 		SIJGM002Dto sijGm002Dto = new SIJGM002Dto();
 		BeanUtils.copyProperties(sijGm002Form,sijGm002Dto);
 
-
 		//入力チェック処理
 		sijGm002Service.inputCheck(sijGm002Dto);
 		if(!sijGm002Dto.getError_hyoji().isEmpty()) {

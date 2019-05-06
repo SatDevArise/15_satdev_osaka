@@ -5,6 +5,7 @@
  * @since 2017/07/17
  */
 
+
 ///**
 // * 必須チェック処理
 // */
@@ -144,13 +145,5 @@ function updateCheck() {
 	}
 }
 
-// /**
-// * ボタン非活性処理
-// */
-// function disabled() {
-// if (session.attribute == "COMGM002") {
-// document.getElementById("update").disabled = true;
-// document.getElementById("delete").disabled = true;
-// }
-// }
+
 

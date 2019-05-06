@@ -164,10 +164,10 @@ public class SIJGM001Controller {
 				sijGm001Form.setBirthDt(syainList.get(i).getBirthDt());
 				sijGm001Form.setSyozokuTeam(syainList.get(i).getSyozokuTeam());
 				sijGm001Form.setGenbaNa(syainList.get(i).getGenbaNa());
-//				sijGm001Form.setKeikaYm(syainList.get(i).getKeikaYm());
+				sijGm001Form.setKeikaYm(syainList.get(i).getKeikaYm());
 				sijGm001Form.setPhaseCd(syainList.get(i).getPhaseCd());
 				sijGm001Form.setSiyoRosenNa(syainList.get(i).getSiyoRosenNa());
-//				sijGm001Form.setHistory(syainList.get(i).getHistory());
+				sijGm001Form.setHistory(syainList.get(i).getHistory());
 				sijGm001Form.setTankaVal(syainList.get(i).getTankaVal());
 				sijgm001FormList.add(sijGm001Form);
 

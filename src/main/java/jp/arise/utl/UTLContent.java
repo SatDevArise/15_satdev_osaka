@@ -55,6 +55,11 @@ public class UTLContent {
 	public static final int INT_TEN = 10;
 
 	/**
+	 * int型：11
+	 */
+	public static final int INT_ELEVEN = 11;
+
+	/**
 	 * int型：20
 	 */
 	public static final int TWENTY = 20;
